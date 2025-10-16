@@ -37,12 +37,17 @@ def count_vowels(text):
     vowels = "aeiou"
     count = 0
     for char in text:
-        if char in vowels:  # This only counts lowercase!
+        if char.lower() in vowels:  # This only counts lowercase!
             count += 1
     return count
 
 # MAKE: Check if string contains only digits
 def is_all_digits(text):
+    count = 0
+    for char in text:
+        if not char.isdigit():
+            return False
+    return True
     # TODO: Return True if every character is a digit (0-9)
     # Return False if any character is not a digit
     # Hint: Use char.isdigit() or check if '0' <= char <= '9'
@@ -63,16 +68,20 @@ def reverse_string(text):
 def remove_spaces(text):
     result = ""
     for char in text:
-        if char == ' ':
+        if char != ' ':
             result = result + char  # This adds spaces instead of removing!
     return result
 
 # MAKE: Create acronym from phrase
 def make_acronym(phrase):
+    acronym = ""
+    phrase_list = phrase.split(" ")
+    for item in phrase_list:
+        acronym = acronym + item[0]
+    return acronym
     # TODO: Take first letter of each word to make acronym
     # Example: "North Atlantic Treaty" -> "NAT"
     # Hint: You'll need to identify word boundaries (spaces)
-    pass
 
 
 # ==============================================================================
@@ -87,10 +96,21 @@ def create_username(full_name):
     Creates a username from a full name.
     Example: 'Zara Sharma' -> 'zsharma'
     """
+    username = ""
+    full_name_split = full_name.split(" ")
+
     # TODO: Split the full_name into first and last names.
     # Use slicing to get the first initial and then combine it
     # with the last name. Make sure the username is all lowercase.
     pass
+
+# Create a function that checks if a string is a palindrome (reads the same forwards and backwards).
+def palindrome_checker(word):
+    word = word.lower()
+    if word == reverse_string(word):
+        return True
+    else:
+        return False
 
 
 
@@ -99,4 +119,12 @@ def create_username(full_name):
 # ==============================================================================
 
 # Make calls to your functions here as necessary
-    
+# print(count_vowels(""))
+# print(is_all_digits("868h83827"))
+# print(reverse_string("tenet"))
+
+# print(remove_spaces("eheh eheheh iajfsk "))
+
+# print(make_acronym("Ministry of Defence"))
+
+print(palindrome_checker("Tenets"))
